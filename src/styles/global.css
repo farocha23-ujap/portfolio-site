@@ -80,11 +80,149 @@ a:hover {
   margin: 0 0 1rem;
 }
 
-.hero-tag {
-  max-width: 34rem;
+.hero-sub {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+}
+
+.hero-meta {
   color: var(--muted);
-  font-size: 1.15rem;
-  margin: 0 0 1.75rem;
+  margin: -0.75rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.1rem 0 0;
+  font-size: 0.92rem;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--accent-2);
+}
+
+.about-p {
+  color: var(--muted);
+  max-width: 44rem;
+  margin: 0 0 0.85rem;
+}
+
+.soft-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.soft-chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.job {
+  margin-bottom: 1.5rem;
+  max-width: 46rem;
+}
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.job h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.job-org {
+  color: var(--accent-2);
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+}
+
+.job-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.job ul {
+  margin: 0.7rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+.job li {
+  margin: 0.35rem 0;
+}
+
+.edu strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.edu span {
+  color: var(--muted);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tech-block {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.tech-block strong {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tech-block p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 700px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.langs {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .cta-row {

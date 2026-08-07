@@ -3,7 +3,6 @@ import { site } from "../content/site";
 import "../styles/global.css";
 
 const liveReady = site.docuguardLiveUrl && !site.docuguardLiveUrl.includes("PLACEHOLDER");
-const emailReady = site.email && !site.email.includes("PLACEHOLDER");
 const linkedinReady = site.linkedin && !site.linkedin.includes("PLACEHOLDER");
 const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
 ---
@@ -14,9 +13,9 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content={`${site.name} — ${site.role}. Portafolio de backend, RAG y seguridad.`}
+      content={`${site.name} — ${site.role}. CV vivo: backend, IA, seguridad y proyectos públicos.`}
     />
-    <title>{site.name} · {site.role}</title>
+    <title>{site.shortName} · CV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,10 +24,20 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
     />
   </head>
   <body>
+    <nav class="nav shell">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#docuguard">DocuGuard</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
     <header class="hero shell">
       <p class="hero-role">{site.role}</p>
-      <h1 class="hero-brand">{site.name}</h1>
+      <h1 class="hero-brand">{site.shortName}</h1>
+      <p class="hero-sub">{site.subtitle}</p>
       <p class="hero-tag">{site.tagline}</p>
+      <p class="hero-meta">{site.location}</p>
       <div class="cta-row">
         {
           liveReady ? (
@@ -37,26 +46,63 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
             </a>
           ) : (
             <a class="btn btn-primary" href={site.featured.repo}>
-              Código DocuGuard
+              Ver DocuGuard
             </a>
           )
         }
-        <a class="btn btn-ghost" href={site.featured.architecture}>Arquitectura</a>
-        <a class="btn btn-ghost" href="#contacto">Contacto</a>
+        <a class="btn btn-ghost" href="#experiencia">Experiencia</a>
+        <a class="btn btn-ghost" href={`mailto:${site.email}`}>Email</a>
       </div>
-      {
-        !liveReady && (
-          <span class="placeholder-warn">
-            DOCUGUARD_LIVE_URL pendiente — edita src/content/site.ts tras el deploy.
-          </span>
-        )
-      }
     </header>
+
+    <section class="section shell" id="sobre-mi">
+      <h2>Sobre mí</h2>
+      {site.about.map((p) => <p class="about-p">{p}</p>)}
+      <div class="soft-row">
+        {site.softSkills.map((s) => <span class="soft-chip">{s}</span>)}
+      </div>
+    </section>
+
+    <section class="section shell" id="experiencia">
+      <h2>Experiencia</h2>
+      {
+        site.experience.map((job) => (
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>{job.title}</h3>
+                <p class="job-org">{job.org}</p>
+              </div>
+              <span class="job-date">{job.dates}</span>
+            </div>
+            <ul>
+              {job.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="section shell" id="educacion">
+      <h2>Educación</h2>
+      {
+        site.education.map((e) => (
+          <div class="edu">
+            <strong>{e.title}</strong>
+            <span>
+              {e.org} · {e.detail}
+            </span>
+          </div>
+        ))
+      }
+    </section>
 
     <section class="section shell" id="docuguard">
       <h2>Proyecto estrella</h2>
       <p class="section-lead">
-        Un solo producto para defender en entrevista: políticas internas con evidencia, no un chat genérico.
+        Evidencia pública de RAG + ingeniería: el proyecto que debes abrir primero.
       </p>
       <article class="featured">
         <div>
@@ -73,11 +119,12 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
                 </a>
               ) : null
             }
-            <a class="btn btn-ghost" href={site.featured.repo}>Ver código</a>
+            <a class="btn btn-ghost" href={site.featured.repo}>Código</a>
+            <a class="btn btn-ghost" href={site.featured.architecture}>Arquitectura</a>
             {
               videoReady ? (
                 <a class="btn btn-ghost" href={site.videoUrl}>
-                  Video 3 min
+                  Video
                 </a>
               ) : null
             }
@@ -86,18 +133,20 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
         <div class="visual" aria-hidden="true">
           <div>
             <strong>DocuGuard</strong>
-            Pregunta → retrieval → citas con score
+            Políticas → retrieval → citas con score
             <br />
-            recall@3 medible · stub sin API key
+            recall@3 · stub sin API key
           </div>
         </div>
       </article>
     </section>
 
     <section class="section shell" id="proyectos">
-      <h2>Más evidencia</h2>
-      <p class="section-lead">Proyectos de soporte. La estrella es DocuGuard.</p>
-      <div class="grid">
+      <h2>Portafolio público</h2>
+      <p class="section-lead">
+        Repos separados por fase. En LinkedIn/CV basta enlazar <strong>esta página</strong>.
+      </p>
+      <div class="grid grid-4">
         {
           site.projects.map((p) => (
             <article class="project">
@@ -112,9 +161,18 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
     </section>
 
     <section class="section shell" id="stack">
-      <h2>Stack</h2>
-      <p class="section-lead">Herramientas que aparecen en demos clonables.</p>
-      <div class="stack">
+      <h2>Stack técnico</h2>
+      <div class="tech-grid">
+        {
+          site.techBlocks.map((t) => (
+            <div class="tech-block">
+              <strong>{t.title}</strong>
+              <p>{t.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="stack" style="margin-top: 1.25rem">
         {site.stack.map((s) => <span>{s}</span>)}
       </div>
     </section>
@@ -122,22 +180,16 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
     <section class="section shell contact" id="contacto">
       <h2>Contacto</h2>
       <p>
-        GitHub: <a href={site.github}>{site.githubUser}</a>
+        Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <p>Teléfono: {site.phone}</p>
+      <p>
+        GitHub (portafolio): <a href={site.github}>{site.githubUser}</a>
         {" · "}
-        Hub técnico: <a href={site.hub}>portfolio-hub</a>
+        Personal: <a href={site.githubPersonal}>felixaroc-a</a>
       </p>
       <p>
-        Email:{" "}
-        {
-          emailReady ? (
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-          ) : (
-            <>
-              <code>EMAIL_PLACEHOLDER</code>
-              <span class="placeholder-warn"> ← cámbialo en site.ts</span>
-            </>
-          )
-        }
+        Hub técnico: <a href={site.hub}>portfolio-hub</a>
       </p>
       <p>
         LinkedIn:{" "}
@@ -147,18 +199,16 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
           ) : (
             <>
               <code>LINKEDIN_PLACEHOLDER</code>
-              <span class="placeholder-warn"> ← cámbialo en site.ts</span>
+              <span class="placeholder-warn"> ← edita site.ts</span>
             </>
           )
         }
       </p>
-      <p style="color: var(--muted); font-size: 0.9rem;">
-        Foto opcional: coloca <code>public/avatar.jpg</code> (ver TU_TOQUES_FINALES.md).
-      </p>
+      <p class="langs">{site.languages.join(" · ")}</p>
     </section>
 
     <footer class="shell">
-      © {new Date().getFullYear()} {site.name} · {site.role}
+      © {new Date().getFullYear()} {site.name} · CV vivo · {site.location}
     </footer>
   </body>
 </html>

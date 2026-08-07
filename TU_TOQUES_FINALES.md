@@ -1,21 +1,18 @@
-# Tus toques finales (solo esto)
+# Tus toques finales
 
-Edita [`src/content/site.ts`](./src/content/site.ts):
+Esta web **ya es tu CV**. En LinkedIn/postulaciones pones **solo el link de Vercel** (esta página). Los repos están abajo; no hace falta desplegar cada uno.
 
-| Campo | Qué poner |
-|-------|-----------|
-| `email` | Tu email real (quita `EMAIL_PLACEHOLDER`) |
-| `linkedin` | URL completa de tu LinkedIn |
-| `docuguardLiveUrl` | URL de Render/Railway tras desplegar `maxima` |
-| `videoUrl` | Loom/YouTube unlisted del demo 3 min (opcional) |
-| `name` | Si quieres nombre completo en lugar de `Felix` |
+## Una sola vez (no por cada repo)
 
-Opcional:
+1. (Opcional) LinkedIn en `src/content/site.ts` → `linkedin`
+2. Vercel → importar `portfolio-site` → deploy → esa URL es tu CV
+3. (Recomendado) Render/Railway → solo DocuGuard (`maxima`) → pegar URL en `docuguardLiveUrl`
+4. (Opcional) Video 3 min → `videoUrl`
+5. (Opcional) `public/avatar.jpg`
 
-1. Copia tu foto a `public/avatar.jpg` (luego puedes enlazarla en el hero si quieres).
-2. Cuenta Vercel → deploy este repo.
-3. Cuenta Render/Railway → DocuGuard (`portfolio-fase-02` / root `maxima`). Guía: en el repo fase-02 → `maxima/DEPLOY.md`.
-4. Actualiza `docuguardLiveUrl` y vuelve a deployar la landing.
-5. Defiende DocuGuard oralmente antes de postular.
+Email, teléfono, experiencia DOT y educación ya están tomados de tu CV.
 
-No hace falta tocar el resto del código para lanzar.
+## Qué NO haces
+
+- No despliegas fase 1, 3 y 4 por separado para el CV (bastan los links de GitHub en esta página).
+- No repites los 5 pasos en cada repo.
