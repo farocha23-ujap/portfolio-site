@@ -1,0 +1,164 @@
+---
+import { site } from "../content/site";
+import "../styles/global.css";
+
+const liveReady = site.docuguardLiveUrl && !site.docuguardLiveUrl.includes("PLACEHOLDER");
+const emailReady = site.email && !site.email.includes("PLACEHOLDER");
+const linkedinReady = site.linkedin && !site.linkedin.includes("PLACEHOLDER");
+const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content={`${site.name} — ${site.role}. Portafolio de backend, RAG y seguridad.`}
+    />
+    <title>{site.name} · {site.role}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero shell">
+      <p class="hero-role">{site.role}</p>
+      <h1 class="hero-brand">{site.name}</h1>
+      <p class="hero-tag">{site.tagline}</p>
+      <div class="cta-row">
+        {
+          liveReady ? (
+            <a class="btn btn-primary" href={site.docuguardLiveUrl}>
+              Live DocuGuard
+            </a>
+          ) : (
+            <a class="btn btn-primary" href={site.featured.repo}>
+              Código DocuGuard
+            </a>
+          )
+        }
+        <a class="btn btn-ghost" href={site.featured.architecture}>Arquitectura</a>
+        <a class="btn btn-ghost" href="#contacto">Contacto</a>
+      </div>
+      {
+        !liveReady && (
+          <span class="placeholder-warn">
+            DOCUGUARD_LIVE_URL pendiente — edita src/content/site.ts tras el deploy.
+          </span>
+        )
+      }
+    </header>
+
+    <section class="section shell" id="docuguard">
+      <h2>Proyecto estrella</h2>
+      <p class="section-lead">
+        Un solo producto para defender en entrevista: políticas internas con evidencia, no un chat genérico.
+      </p>
+      <article class="featured">
+        <div>
+          <h3>{site.featured.title}</h3>
+          <p class="sub">{site.featured.subtitle}</p>
+          <ul>
+            {site.featured.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          <div class="cta-row">
+            {
+              liveReady ? (
+                <a class="btn btn-primary" href={site.docuguardLiveUrl}>
+                  Abrir demo
+                </a>
+              ) : null
+            }
+            <a class="btn btn-ghost" href={site.featured.repo}>Ver código</a>
+            {
+              videoReady ? (
+                <a class="btn btn-ghost" href={site.videoUrl}>
+                  Video 3 min
+                </a>
+              ) : null
+            }
+          </div>
+        </div>
+        <div class="visual" aria-hidden="true">
+          <div>
+            <strong>DocuGuard</strong>
+            Pregunta → retrieval → citas con score
+            <br />
+            recall@3 medible · stub sin API key
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell" id="proyectos">
+      <h2>Más evidencia</h2>
+      <p class="section-lead">Proyectos de soporte. La estrella es DocuGuard.</p>
+      <div class="grid">
+        {
+          site.projects.map((p) => (
+            <article class="project">
+              <div class="phase">{p.phase}</div>
+              <h3>{p.title}</h3>
+              <p>{p.blurb}</p>
+              <a href={p.href}>Repositorio →</a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section shell" id="stack">
+      <h2>Stack</h2>
+      <p class="section-lead">Herramientas que aparecen en demos clonables.</p>
+      <div class="stack">
+        {site.stack.map((s) => <span>{s}</span>)}
+      </div>
+    </section>
+
+    <section class="section shell contact" id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        GitHub: <a href={site.github}>{site.githubUser}</a>
+        {" · "}
+        Hub técnico: <a href={site.hub}>portfolio-hub</a>
+      </p>
+      <p>
+        Email:{" "}
+        {
+          emailReady ? (
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          ) : (
+            <>
+              <code>EMAIL_PLACEHOLDER</code>
+              <span class="placeholder-warn"> ← cámbialo en site.ts</span>
+            </>
+          )
+        }
+      </p>
+      <p>
+        LinkedIn:{" "}
+        {
+          linkedinReady ? (
+            <a href={site.linkedin}>{site.linkedin}</a>
+          ) : (
+            <>
+              <code>LINKEDIN_PLACEHOLDER</code>
+              <span class="placeholder-warn"> ← cámbialo en site.ts</span>
+            </>
+          )
+        }
+      </p>
+      <p style="color: var(--muted); font-size: 0.9rem;">
+        Foto opcional: coloca <code>public/avatar.jpg</code> (ver TU_TOQUES_FINALES.md).
+      </p>
+    </section>
+
+    <footer class="shell">
+      © {new Date().getFullYear()} {site.name} · {site.role}
+    </footer>
+  </body>
+</html>
