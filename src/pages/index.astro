@@ -2,8 +2,20 @@
 import { site } from "../content/site";
 import "../styles/global.css";
 
-const liveReady = site.docuguardLiveUrl && !site.docuguardLiveUrl.includes("PLACEHOLDER");
-const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
+function isFilled(value: string): boolean {
+  const v = (value || "").trim();
+  if (!v) return false;
+  if (v.includes("PLACEHOLDER")) return false;
+  if (v === "DOCUGUARD_LIVE_URL") return false;
+  if (v === "LINKEDIN_PLACEHOLDER") return false;
+  if (v === "VIDEO_PLACEHOLDER") return false;
+  if (!/^https?:\/\//i.test(v)) return false;
+  return true;
+}
+
+const liveReady = isFilled(site.docuguardLiveUrl);
+const linkedinReady = isFilled(site.linkedin);
+const videoReady = isFilled(site.videoUrl);
 ---
 
 <html lang="es">
@@ -189,6 +201,19 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
       </p>
       <p>
         Hub técnico: <a href={site.hub}>portfolio-hub</a>
+      </p>
+      <p>
+        LinkedIn:{" "}
+        {
+          linkedinReady ? (
+            <a href={site.linkedin}>{site.linkedin}</a>
+          ) : (
+            <>
+              <code>LINKEDIN_PLACEHOLDER</code>
+              <span class="placeholder-warn"> ← edita site.ts</span>
+            </>
+          )
+        }
       </p>
       <p class="langs">{site.languages.join(" · ")}</p>
     </section>

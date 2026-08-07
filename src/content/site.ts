@@ -1,6 +1,6 @@
 /**
  * CV vivo — Felix Alberto Arocha Duran
- * Pendientes opcionales: docuguardLiveUrl, videoUrl, avatar.
+ * Edita placeholders restantes: linkedin, docuguardLiveUrl, videoUrl, avatar.
  */
 export const site = {
   name: "Felix Alberto Arocha Duran",
@@ -12,10 +12,12 @@ export const site = {
   location: "Valencia, Venezuela",
   phone: "+58 414-4001856",
   email: "felixarocha1@gmail.com",
+  linkedin: "LINKEDIN_PLACEHOLDER",
   github: "https://github.com/farocha23-ujap",
   hub: "https://github.com/farocha23-ujap/portfolio-hub",
-  docuguardLiveUrl: "DOCUGUARD_LIVE_URL",
-  videoUrl: "VIDEO_PLACEHOLDER",
+  /** Cuando tengas Render/Railway, pon aquí la URL completa https://... */
+  docuguardLiveUrl: "",
+  videoUrl: "",
   avatarPath: "/avatar.jpg",
   tagline:
     "Construyo APIs, agentes y sistemas con evidencia: arquitectura limpia, seguridad y demos clonables.",
