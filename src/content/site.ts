@@ -12,7 +12,7 @@ export const site = {
   location: "Valencia, Venezuela",
   phone: "+58 414-4001856",
   email: "felixarocha1@gmail.com",
-  linkedin: "LINKEDIN_PLACEHOLDER",
+  linkedin: "",
   github: "https://github.com/farocha23-ujap",
   hub: "https://github.com/farocha23-ujap/portfolio-hub",
   /** Live demo on Render */
@@ -20,11 +20,11 @@ export const site = {
   videoUrl: "",
   avatarPath: "/avatar.jpg",
   tagline:
-    "Construyo APIs, agentes y sistemas con evidencia: arquitectura limpia, seguridad y demos clonables.",
+    "Backend, APIs e integración de IA. Estudiante UJAP (8vo) con experiencia en producto real (DOT).",
   about: [
-    "Estudiante de Ingeniería en Computación (8vo semestre, Universidad José Antonio Páez) con mentalidad de crecimiento rápido y dominio de fundamentos: POO, algoritmos, estructuras de datos, bases de datos, seguridad y arquitectura de software.",
-    "Experiencia práctica en desarrollo modular, arquitectura hexagonal, automatización, gestión de datos e integración de IA. Construyo soluciones full-stack robustas sin limitarme a un solo dominio.",
-    "Este sitio es mi CV vivo: perfil + evidencia ejecutable (DocuGuard y repos públicos de backend, RAG y seguridad).",
+    "Soy estudiante de Ingeniería en Computación en la UJAP (8vo semestre). Me interesa el backend, la arquitectura limpia y meter IA donde resuelva un problema concreto, no de adorno.",
+    "En DOT / Nordik-IA trabajé full-stack (Electron + React + FastAPI): JWT, suscripciones, Postgres/Firestore, OAuth y agentes con tool-calling.",
+    "En GitHub publico demos que se pueden clonar: DocuGuard (RAG con citas), APIs con Docker, auth y un firewall básico de prompts.",
   ],
   experience: [
     {
@@ -56,39 +56,39 @@ export const site = {
   languages: ["Español — nativo", "Inglés — lectura técnica"],
   featured: {
     title: "DocuGuard",
-    subtitle: "RAG sobre políticas internas con citas obligatorias",
+    subtitle: "Preguntas sobre políticas internas; la respuesta trae fuentes (chunk_id + score)",
     repo: "https://github.com/farocha23-ujap/portfolio-fase-02-cerebro-ia/tree/main/maxima",
     architecture:
       "https://github.com/farocha23-ujap/portfolio-fase-02-cerebro-ia/blob/main/maxima/ARCHITECTURE.md",
     bullets: [
-      "Retrieval + generación con chunk_id y scores",
-      "UI de producto, métrica recall@3 y stub sin API key",
-      "Límites documentados (BoW ≠ embeddings densos)",
+      "API FastAPI + UI simple",
+      "Funciona sin API key (modo stub); con key usa OpenAI",
+      "Métrica recall@3 sobre un set fijo de preguntas",
     ],
   },
   projects: [
     {
       title: "CSV Ingest API",
-      phase: "Fase 1 · Cimientos",
-      blurb: "FastAPI + Postgres + Docker: limpia y expone CSV con tipado y tests.",
+      phase: "Backend · datos",
+      blurb: "Sube un CSV, limpia filas y las sirve por HTTP. Docker + Postgres.",
       href: "https://github.com/farocha23-ujap/portfolio-fase-01-cimientos",
     },
     {
-      title: "DocuGuard (RAG)",
-      phase: "Fase 2 · Cerebro IA · estrella",
-      blurb: "Asistente con citas, UI premium y evaluación recall@3.",
+      title: "DocuGuard",
+      phase: "IA · RAG",
+      blurb: "Asistente con citas sobre políticas. Demo en Render.",
       href: "https://github.com/farocha23-ujap/portfolio-fase-02-cerebro-ia",
     },
     {
-      title: "Auth JWT + Go",
-      phase: "Fase 3 · Seguridad",
-      blurb: "Login endurecido, rate limit, audit log y validador JWT en Go.",
+      title: "Auth JWT",
+      phase: "Seguridad",
+      blurb: "Register/login, tokens, rate limit. Hay un validador en Go.",
       href: "https://github.com/farocha23-ujap/portfolio-fase-03-ciberseguridad",
     },
     {
       title: "Prompt firewall",
-      phase: "Fase 4 · Singularidad",
-      blurb: "Licencia HMAC + firewall de jailbreaks + CI DevSecOps.",
+      phase: "IA · defensa",
+      blurb: "Bloquea jailbreaks básicos + chequeo de licencia de demo.",
       href: "https://github.com/farocha23-ujap/portfolio-fase-04-singularidad",
     },
   ],
