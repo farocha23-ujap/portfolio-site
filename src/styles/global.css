@@ -71,6 +71,13 @@ a:hover {
   margin: 0 0 0.75rem;
 }
 
+.hero-tag {
+  max-width: 36rem;
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
 .hero-role {
   color: var(--accent-2);
   font-weight: 600;
