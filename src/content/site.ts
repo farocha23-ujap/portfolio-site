@@ -15,8 +15,8 @@ export const site = {
   linkedin: "LINKEDIN_PLACEHOLDER",
   github: "https://github.com/farocha23-ujap",
   hub: "https://github.com/farocha23-ujap/portfolio-hub",
-  /** Cuando tengas Render/Railway, pon aquí la URL completa https://... */
-  docuguardLiveUrl: "",
+  /** Live demo on Render */
+  docuguardLiveUrl: "https://docuguard-hbtn.onrender.com",
   videoUrl: "",
   avatarPath: "/avatar.jpg",
   tagline:
