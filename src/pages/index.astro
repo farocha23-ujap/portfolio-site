@@ -3,7 +3,6 @@ import { site } from "../content/site";
 import "../styles/global.css";
 
 const liveReady = site.docuguardLiveUrl && !site.docuguardLiveUrl.includes("PLACEHOLDER");
-const linkedinReady = site.linkedin && !site.linkedin.includes("PLACEHOLDER");
 const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
 ---
 
@@ -190,19 +189,6 @@ const videoReady = site.videoUrl && !site.videoUrl.includes("PLACEHOLDER");
       </p>
       <p>
         Hub técnico: <a href={site.hub}>portfolio-hub</a>
-      </p>
-      <p>
-        LinkedIn:{" "}
-        {
-          linkedinReady ? (
-            <a href={site.linkedin}>{site.linkedin}</a>
-          ) : (
-            <>
-              <code>LINKEDIN_PLACEHOLDER</code>
-              <span class="placeholder-warn"> ← edita site.ts</span>
-            </>
-          )
-        }
       </p>
       <p class="langs">{site.languages.join(" · ")}</p>
     </section>
